@@ -78,6 +78,14 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .about-p{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2vw,24px);color:var(--cream-dim);line-height:1.7;max-width:900px;margin-bottom:24px}
 .about-p strong{color:var(--cream);font-weight:600}
 .about-p em{font-style:italic}
+
+.pin-video{position:relative;cursor:pointer}
+.pin-video .pin-thumb{display:block;transition:opacity 0.3s}
+.pin-video .pin-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.3s;border-radius:14px}
+.pin-video .pin-play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:32px;opacity:0.8;pointer-events:none;transition:opacity 0.3s;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
+.pin-video:hover .pin-thumb{opacity:0}
+.pin-video:hover .pin-vid{opacity:1}
+.pin-video:hover .pin-play-icon{opacity:0}
 </style>
 </head>
 <body>
@@ -107,31 +115,31 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 
 <section class="ps" id="cover">
   <div class="pin-grid">
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Campari</div><div class="pin-sub">Book Cover · Visual Design</div></div></div>
-<div class="pin span-v"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Manuale di moda maschile vintage</div><div class="pin-sub">Book Cover · Illustrazione</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gastrono Geek Anime</div><div class="pin-sub">Book Cover · Cucina & Pop</div></div></div>
-<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">È vero che... Il kefir</div><div class="pin-sub">Book Cover · Editoriale</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">L'ultimo giorno di Luigi Tenco</div><div class="pin-sub">Book Cover · Biografia</div></div></div>
-<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_06.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Artusi – La scienza in cucina</div><div class="pin-sub">Book Cover · Classici</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_07.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Tagliatelle ricotta e limone</div><div class="pin-sub">Book Cover · Cucina</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_08.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">La tradizione vegetale</div><div class="pin-sub">Book Cover · Natura</div></div></div>
-<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_09.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Intervista a Ted Nasmith</div><div class="pin-sub">Layout · Editorial Spread</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_10.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Improve Your English</div><div class="pin-sub">Layout · Didattica</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_11.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">E sempre allegri bisogna</div><div class="pin-sub">Layout · Narrativa</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">EN</div><div class="pin-sub">Layout · Copertina</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_13.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Balloon Dog</div><div class="pin-sub">Layout · Arte Contemporanea</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_14.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Corri – Metodo definitivo</div><div class="pin-sub">Layout · Sport</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_15.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cocktail</div><div class="pin-sub">Layout · Food & Drink</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_16.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Londra – Guide Weekend</div><div class="pin-sub">Layout · Turismo</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_17.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Notturno</div><div class="pin-sub">Layout · Fotografia</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_18.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Festival</div><div class="pin-sub">Layout · Evento</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso Droga – Renzo Stefanel</div><div class="pin-sub">Visual · Book Cover</div></div></div>
-<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Fare e conoscere la Birra</div><div class="pin-sub">Visual · Brand & Editorial</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Vespa – Progetto 3D</div><div class="pin-sub">Visual · Motion & 3D</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_22.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Vespa – Animazione</div><div class="pin-sub">Visual · Motion Graphics</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_23.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Vespa – Dettaglio</div><div class="pin-sub">Visual · Fotografia</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_24.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Detective Noir</div><div class="pin-sub">Visual · Illustrazione</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_25.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Foglia Mosaico</div><div class="pin-sub">Visual · Illustrazione</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Campari</div><div class="pin-sub">Advertising Campaign</div></div></div>
+<div class="pin span-v"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">L'ultimo giorno di Luigi Tenco</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gastrono Geek Anime</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Manuale di moda maschile vintage</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Buono, facile e veloce</div><div class="pin-sub">Book Design</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_06.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Artusi</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_07.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Super Food</div><div class="pin-sub">Book Design</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_08.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Giappone</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_09.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Impressionisti</div><div class="pin-sub">Book Design</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_10.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Improve Your English</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_11.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">E sempre allegri bisogna stare</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Queen</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_13.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Correre <em>Il metodo definitivo in 10 passi</em></div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_14.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Balloon Dog</div><div class="pin-sub">AI Illustration</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_15.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cocktail</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_16.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Motion Beat Fest</div><div class="pin-sub">Event Design</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_17.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso, droga e calci in bocca <em>Storie del maledetto Rock</em></div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_18.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Birra</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_19.mp4" muted loop playsinline preload="none"></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin span-h"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_20.mp4" muted loop playsinline preload="none"></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_21.mp4" muted loop playsinline preload="none"></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_22.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Misteri da risolvere</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_23.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Meraviglie della Natura</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_24.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cucina toscana</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_25.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Luoghi artistici</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_26.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cucina Toscana – Paolo Petroni</div><div class="pin-sub">Visual · Food Editorial</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_27.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Londra – Guide Weekend</div><div class="pin-sub">Visual · Editorial</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_28.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">London Illustration</div><div class="pin-sub">Visual · Illustrazione</div></div></div>
@@ -190,6 +198,45 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.le
 (function a(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('.pin-video').forEach(function(pin) {
+  var vid = pin.querySelector('.pin-vid');
+  var thumb = pin.querySelector('.pin-thumb');
+  var icon = pin.querySelector('.pin-play-icon');
+  var playing = false;
+
+  // Desktop hover
+  pin.addEventListener('mouseenter', function() {
+    vid.play();
+    thumb.style.opacity = '0';
+    icon.style.opacity = '0';
+  });
+  pin.addEventListener('mouseleave', function() {
+    vid.pause();
+    vid.currentTime = 0;
+    thumb.style.opacity = '1';
+    icon.style.opacity = '0.8';
+  });
+
+  // Mobile tap
+  pin.addEventListener('touchstart', function(e) {
+    if (!playing) {
+      e.preventDefault();
+      vid.play();
+      thumb.style.opacity = '0';
+      icon.style.opacity = '0';
+      playing = true;
+    } else {
+      vid.pause();
+      vid.currentTime = 0;
+      thumb.style.opacity = '1';
+      icon.style.opacity = '0.8';
+      playing = false;
+    }
+  }, {passive: false});
+});
 </script>
 </body>
 </html>
