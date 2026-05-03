@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vispo Design — Vittorio Esposito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#09090c;--blue:#4a9ebe;--blue-dim:#2d6e8a;--cream:#e8e0d0;--cream-dim:#9a9080;--border:rgba(74,158,190,0.15)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;cursor:none}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:0.5}
+.cursor{position:fixed;width:8px;height:8px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(74,158,190,0.5);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.12s;transform:translate(-50%,-50%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:26px 48px;background:linear-gradient(to bottom,rgba(9,9,12,0.97),transparent)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:0.28em;color:var(--blue);text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--blue)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 48px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:50%;left:-0.05em;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,22vw,320px);color:transparent;-webkit-text-stroke:1px rgba(74,158,190,0.06);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}
+.hero-ey{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.3em;color:var(--blue);text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fu 1s ease 0.3s forwards}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,110px);font-weight:300;line-height:0.95;color:var(--cream);opacity:0;animation:fu 1s ease 0.5s forwards;margin-bottom:28px}
+.hero-h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:18px;font-weight:300;color:var(--cream-dim);max-width:480px;opacity:0;animation:fu 1s ease 0.7s forwards;margin-bottom:48px}
+.hero-cta{opacity:0;animation:fu 1s ease 0.9s forwards}
+.si{position:absolute;bottom:40px;right:48px;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fu 1s ease 1.1s forwards}
+.si span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--cream-dim);writing-mode:vertical-rl;text-transform:uppercase}
+.sl-anim{width:1px;height:60px;background:linear-gradient(to bottom,var(--blue-dim),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.ps{padding:96px 40px 56px;border-top:1px solid var(--border);max-width:1500px;margin:0 auto}
+.sh{display:flex;align-items:baseline;gap:20px;margin-bottom:44px}
+.sn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.3em;color:var(--blue);opacity:0.7}
+.st{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,60px);letter-spacing:0.05em;color:var(--cream);line-height:1}
+.sl2{flex:1;height:1px;background:var(--border)}
+.pin-grid{columns:3;column-gap:12px}
+.pin{cursor:none;break-inside:avoid;margin-bottom:12px}
+.pin-inner{overflow:hidden;border-radius:14px;background:#111318}
+.pin-inner img{width:100%;height:auto;display:block;border-radius:14px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s}
+.pin:hover .pin-inner img{transform:scale(1.04);opacity:0.88}
+.pin-cap{padding:8px 4px 4px}
+.pin-title{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream);line-height:1.3}
+.pin-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--cream-dim);text-transform:uppercase;margin-top:2px}
+.about-wrap{border-top:1px solid var(--border);padding:100px 48px;max-width:900px;margin:0 auto}
+.about-eyelet{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.3em;color:var(--blue);text-transform:uppercase;margin-bottom:32px}
+.about-name{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,9vw,120px);font-weight:300;line-height:0.92;color:var(--cream);margin-bottom:56px}
+.about-name em{font-style:italic;color:var(--blue)}
+.about-body{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-weight:300;color:var(--cream-dim);line-height:1.75;margin-bottom:48px}
+.about-body strong{color:var(--cream);font-weight:400}
+.about-body em{font-style:italic;color:var(--cream)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:0}
+.tag{border:1px solid rgba(74,158,190,0.3);padding:7px 18px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--blue-dim);text-transform:uppercase;border-radius:2px;transition:all 0.3s}
+.tag:hover{border-color:var(--blue);color:var(--blue)}
+.cta-block{border-top:1px solid var(--border);background:rgba(9,9,12,0.6);padding:100px 48px;text-align:center}
+.cta-block h3{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,80px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:48px}
+.cta-block h3 em{font-style:italic;color:var(--blue);display:block}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--blue-dim);padding:18px 48px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-radius:2px;transition:all 0.4s;cursor:none}
+.btn:hover{background:var(--blue);color:var(--bg);border-color:var(--blue)}
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;justify-content:space-between}
+footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--cream-dim);opacity:0.45}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav{padding:20px 24px}.hero{padding:80px 24px}
+  .ps{padding:72px 16px 40px}
+  .pin-grid{columns:2}
+  .about-wrap{padding:72px 24px}
+  .cta-block{padding:72px 24px}
+  footer{flex-direction:column;gap:8px;padding:24px}
+}
+
+.about-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--blue);text-transform:uppercase;margin-bottom:24px;font-weight:600}
+.about{padding:96px 40px 56px;border-top:1px solid var(--border);max-width:1500px;margin:0 auto}
+.about-name{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,96px);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:48px}
+.about-name em{color:var(--cyan);font-style:italic}
+.about-p{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2vw,24px);color:var(--cream-dim);line-height:1.7;max-width:900px;margin-bottom:24px}
+.about-p strong{color:var(--cream);font-weight:600}
+.about-p em{font-style:italic}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav>
+  <a href="#" class="nav-logo">Vispo Design</a>
+  <ul class="nav-links">
+    <li><a href="#cover">Cover</a></li>
+    <li><a href="#layout">Layout</a></li>
+    <li><a href="#visual">Visual</a></li>
+    <li><a href="#editorial">Editorial</a></li>
+    <li><a href="#art">Art</a></li>
+    <li><a href="#illustration">Illustration</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">VISPO</div>
+  <div class="hero-ey">Art Director — Editorial Designer — Illustratore</div>
+  <h1 class="hero-h1">Vittorio<br><em>Esposito</em></h1>
+  <p class="hero-sub">Vent'anni di progetto editoriale. Dalla copertina alla pagina, dall'identità alla narrazione visiva.</p>
+  <div class="hero-cta"><a href="#cover" class="btn">Esplora il portfolio ↓</a></div>
+  <div class="si"><div class="sl-anim"></div><span>Scroll</span></div>
+</section>
+
+<section class="ps" id="cover">
+  <div class="pin-grid">
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Campari</div><div class="pin-sub">Book Cover · Visual Design</div></div></div>
+<div class="pin span-v"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Manuale di moda maschile vintage</div><div class="pin-sub">Book Cover · Illustrazione</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gastrono Geek Anime</div><div class="pin-sub">Book Cover · Cucina & Pop</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">È vero che... Il kefir</div><div class="pin-sub">Book Cover · Editoriale</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">L'ultimo giorno di Luigi Tenco</div><div class="pin-sub">Book Cover · Biografia</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_06.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Artusi – La scienza in cucina</div><div class="pin-sub">Book Cover · Classici</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_07.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Tagliatelle ricotta e limone</div><div class="pin-sub">Book Cover · Cucina</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_08.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">La tradizione vegetale</div><div class="pin-sub">Book Cover · Natura</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_09.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Intervista a Ted Nasmith</div><div class="pin-sub">Layout · Editorial Spread</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_10.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Improve Your English</div><div class="pin-sub">Layout · Didattica</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_11.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">E sempre allegri bisogna</div><div class="pin-sub">Layout · Narrativa</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">EN</div><div class="pin-sub">Layout · Copertina</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_13.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Balloon Dog</div><div class="pin-sub">Layout · Arte Contemporanea</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_14.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Corri – Metodo definitivo</div><div class="pin-sub">Layout · Sport</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_15.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cocktail</div><div class="pin-sub">Layout · Food & Drink</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_16.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Londra – Guide Weekend</div><div class="pin-sub">Layout · Turismo</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_17.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Notturno</div><div class="pin-sub">Layout · Fotografia</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_18.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Festival</div><div class="pin-sub">Layout · Evento</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso Droga – Renzo Stefanel</div><div class="pin-sub">Visual · Book Cover</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Fare e conoscere la Birra</div><div class="pin-sub">Visual · Brand & Editorial</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Vespa – Progetto 3D</div><div class="pin-sub">Visual · Motion & 3D</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_22.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Vespa – Animazione</div><div class="pin-sub">Visual · Motion Graphics</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_23.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Vespa – Dettaglio</div><div class="pin-sub">Visual · Fotografia</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_24.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Detective Noir</div><div class="pin-sub">Visual · Illustrazione</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_25.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Foglia Mosaico</div><div class="pin-sub">Visual · Illustrazione</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_26.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cucina Toscana – Paolo Petroni</div><div class="pin-sub">Visual · Food Editorial</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_27.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Londra – Guide Weekend</div><div class="pin-sub">Visual · Editorial</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_28.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">London Illustration</div><div class="pin-sub">Visual · Illustrazione</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_29.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Coca-Cola</div><div class="pin-sub">Editorial · Visual Design</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_30.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Universo Zero – Il romanzo di Renato</div><div class="pin-sub">Editorial · Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_31.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gazpacho – Demetra</div><div class="pin-sub">Editorial · Food</div></div></div>
+<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_32.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Il Diabolik disegnato da Corrado Roi</div><div class="pin-sub">Editorial · Spread</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_33.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Corsivo in Calligrafia</div><div class="pin-sub">Editorial · Book Cover</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_35.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sento Dico Voglio</div><div class="pin-sub">Editorial · Book Cover</div></div></div>
+  </div>
+</section>
+
+<section class="ps" id="art">
+  <div class="sh reveal"><span class="sn">05</span><h2 class="st">Art & Illustration</h2><div class="sl2"></div></div>
+  <div class="pin-grid">
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_38.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Popeye</div><div class="pin-sub">Art · Acrilico su tela · Retro Pulse</div></div></div>
+<div class="pin span-4"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_39.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Capitan Harlock</div><div class="pin-sub">Art · Acrilico su tela · Retro Pulse</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_40.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Lupin III</div><div class="pin-sub">Art · Acrilico su tela · Retro Pulse</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_41.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Astratto #1</div><div class="pin-sub">Art · Acrilico su tela</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_42.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Goldrake</div><div class="pin-sub">Art · Acrilico su tela · Retro Pulse</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_43.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Astratto #2</div><div class="pin-sub">Art · Acrilico su tela</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_44.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Ritratto</div><div class="pin-sub">Art · Acquarello</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_45.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Paesaggio</div><div class="pin-sub">Art · Acquarello</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_46.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Composizione</div><div class="pin-sub">Art · Acquarello</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_47.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Costa</div><div class="pin-sub">Art · Acquarello</div></div></div>
+<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_48.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Mickey Mouse</div><div class="pin-sub">Illustration · Acrilico su tela · Retro Pulse</div></div></div>
+  </div>
+</section>
+
+
+
+<section class="about" id="about">
+  <div class="about-inner reveal">
+    <p class="about-label">ABOUT</p>
+    <h2 class="about-name">Vittorio<br><em>Esposito</em></h2>
+    <p class="about-p"><strong>Art director, designer editoriale e illustratore</strong> con oltre vent'anni di progetto visivo. Ex Art Director di <strong>Giunti Editore</strong> (2005–2024), opero oggi come freelance sotto il brand <strong>Vispo Design</strong>.</p>
+    <p class="about-p">Il mio lavoro abita lo spazio tra testo e immagine: copertine, identità editoriali, visual design. Ho coordinato oltre <strong>1000 pubblicazioni</strong> e guidato il redesign strategico di collane editoriali di rilievo nazionale.</p>
+    <p class="about-p">Insegno <em>Graphic Design Editoriale</em> e continuo la ricerca visiva con la serie pittorica <em>Retro Pulse – Icone senza tempo</em>, esposta a Londra, Milano e Napoli.</p>
+  </div>
+</section>
+
+<div class="cta-block reveal">
+  <h3>Hai un progetto?<br><em>Parliamone.</em></h3>
+  <a href="mailto:vit.esposito@gmail.com" class="btn">Scrivimi →</a>
+</div>
+
+<footer>
+  <p>© 2026 Vittorio Esposito · Vispo Design</p>
+  <p>vit.esposito@gmail.com · +39 338 5623294</p>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function a(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
