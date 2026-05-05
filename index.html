@@ -38,7 +38,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .pin-grid{columns:3;column-gap:12px}
 .pin{cursor:none;break-inside:avoid;margin-bottom:12px}
 .pin-inner{overflow:hidden;border-radius:14px;background:#111318}
-.pin-inner img{width:100%;height:auto;display:block;border-radius:14px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;content-visibility:auto}
+.pin-inner img{width:100%;height:auto;display:block;border-radius:14px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s}
 .pin:hover .pin-inner img{transform:scale(1.04);opacity:0.88}
 .pin-cap{padding:8px 4px 4px}
 .pin-title{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream);line-height:1.3}
@@ -80,13 +80,19 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .about-p em{font-style:italic}
 
 .pin-video{position:relative;cursor:pointer}
+.pin-video .pin-thumb{display:block;transition:opacity 0.3s}
+.pin-video .pin-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.3s;border-radius:14px}
+.pin-video .pin-play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:32px;opacity:0.8;pointer-events:none;transition:opacity 0.3s;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
+.pin-video:hover .pin-thumb{opacity:0}
+.pin-video:hover .pin-vid{opacity:1}
+.pin-video:hover .pin-play-icon{opacity:0}
+
+.pin-video{position:relative;cursor:pointer}
 .pin-video .pin-thumb{display:block;opacity:0}
 .pin-video .pin-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;border-radius:14px}
 .pin-video .pin-play-icon{display:none}
-
-html{scroll-behavior:smooth}
-.pin{will-change:transform;contain:layout}
-.pin-inner img{will-change:transform}
+.pin-video.playing .pin-thumb{opacity:0}
+.pin-video.playing .pin-vid{opacity:1}
 
 .lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;padding:40px;box-sizing:border-box}
 .lightbox.active{display:flex}
@@ -104,9 +110,15 @@ html{scroll-behavior:smooth}
 .lightbox-close{position:fixed;top:24px;right:32px;font-size:28px;color:var(--cream-dim);cursor:pointer;background:none;border:none;line-height:1;transition:color 0.2s}
 .lightbox-close:hover{color:var(--cream)}
 @media(max-width:600px){
+  .lightbox{padding:20px}
   .lightbox-inner{flex-direction:column;gap:24px;overflow-y:auto;max-height:90vh}
   .lightbox-img{max-width:100%}
 }
+
+.lightbox-video-inner{display:flex;flex-direction:column;align-items:center;max-width:800px;width:100%}
+.lightbox-video-inner video{width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.lightbox-video-inner .lightbox-label{margin-top:16px;align-self:flex-start}
+.lightbox-video-inner .lightbox-title{align-self:flex-start}
 </style>
 </head>
 <body>
@@ -136,10 +148,10 @@ html{scroll-behavior:smooth}
 
 <section class="ps" id="cover">
   <div class="pin-grid">
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Campari</div><div class="pin-sub">Advertising Campaign</div></div></div>
-<div class="pin span-v"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">L'ultimo giorno di Luigi Tenco</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gastrono Geek Anime</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Manuale di moda maschile vintage</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin" onclick="openLightbox('lightbox-img01')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Campari</div><div class="pin-sub">Advertising Campaign</div></div></div>
+<div class="pin span-v" onclick="openLightbox('lightbox-img02')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">L'ultimo giorno di Luigi Tenco</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin" onclick="openLightbox('lightbox-img03')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gastrono Geek Anime</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin span-h" onclick="openLightbox('lightbox-img04')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Manuale di moda maschile vintage</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Buono, facile e veloce</div><div class="pin-sub">Book Design</div></div></div>
 <div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_06.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Artusi</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_07.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Super Food</div><div class="pin-sub">Book Design</div></div></div>
@@ -148,15 +160,15 @@ html{scroll-behavior:smooth}
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_10.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Improve Your English</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_11.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">E sempre allegri bisogna stare</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin" onclick="openLightbox('lightbox-queen')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Queen</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_13.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Correre – <em>Il metodo definitivo in 10 passi</em></div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin" onclick="openLightbox('lightbox-img13')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_13.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Correre – <em>Il metodo definitivo in 10 passi</em></div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_14.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Balloon Dog</div><div class="pin-sub">AI Illustration</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_15.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cocktail</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_16.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Motion Beat Fest</div><div class="pin-sub">Event Design</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_17.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso, droga e calci in bocca</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_18.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso, droga e calci in bocca</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_19.mp4" muted loop playsinline autoplay></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
-<div class="pin span-h"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_20.mp4" muted loop playsinline autoplay></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
-<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_21.mp4" muted loop playsinline autoplay></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin" onclick="openVideoLightbox('lightbox-vid-20')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_18.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso, droga e calci in bocca</div><div class="pin-sub">Book Cover</div></div></div>
+<div class="pin" onclick="openVideoLightbox('lightbox-vid-19')" style="cursor:pointer"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_19.mp4" muted loop playsinline preload="none"></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin span-h" onclick="openVideoLightbox('lightbox-vid-20')" style="cursor:pointer"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_20.mp4" muted loop playsinline preload="none"></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin" onclick="openVideoLightbox('lightbox-vid-21')" style="cursor:pointer"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_21.mp4" muted loop playsinline preload="none"></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_22.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Misteri da risolvere</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_23.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Meraviglie della Natura</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_24.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cucina toscana</div><div class="pin-sub">Book Cover</div></div></div>
@@ -226,23 +238,54 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 <script>
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
 document.querySelectorAll('.pin-video').forEach(function(pin) {
   var vid = pin.querySelector('.pin-vid');
-  
-  // Forza play su mobile al primo scroll/touch
-  if (isMobile) {
-    document.addEventListener('touchstart', function startAll() {
-      document.querySelectorAll('.pin-video .pin-vid').forEach(function(v) {
-        v.play().catch(function(){});
-      });
-      document.removeEventListener('touchstart', startAll);
-    }, {once: true});
-  }
+  var thumb = pin.querySelector('.pin-thumb');
+  var icon = pin.querySelector('.pin-play-icon');
+  var playing = false;
 
   // Desktop hover
-  if (!isMobile) {
+  pin.addEventListener('mouseenter', function() {
+    vid.play();
+    thumb.style.opacity = '0';
+    icon.style.opacity = '0';
+  });
+  pin.addEventListener('mouseleave', function() {
+    vid.pause();
+    vid.currentTime = 0;
+    thumb.style.opacity = '1';
+    icon.style.opacity = '0.8';
+  });
+
+  // Mobile tap
+  pin.addEventListener('touchstart', function(e) {
+    if (!playing) {
+      e.preventDefault();
+      vid.play();
+      thumb.style.opacity = '0';
+      icon.style.opacity = '0';
+      playing = true;
+    } else {
+      vid.pause();
+      vid.currentTime = 0;
+      thumb.style.opacity = '1';
+      icon.style.opacity = '0.8';
+      playing = false;
+    }
+  }, {passive: false});
+});
+</script>
+
+<script>
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+document.querySelectorAll('.pin-video').forEach(function(pin) {
+  var vid = pin.querySelector('.pin-vid');
+  if (isMobile) {
+    document.addEventListener('touchstart', function startAll() {
+      document.querySelectorAll('.pin-video .pin-vid').forEach(function(v) { v.play().catch(function(){}); });
+      document.removeEventListener('touchstart', startAll);
+    }, {once: true});
+  } else {
     pin.addEventListener('mouseenter', function() { vid.play(); });
     pin.addEventListener('mouseleave', function() { vid.pause(); vid.currentTime = 0; });
   }
@@ -261,11 +304,8 @@ document.querySelectorAll('.pin-video').forEach(function(pin) {
       <p class="lightbox-author">Michele Primi</p>
       <ul class="lightbox-meta">
         <li><span>Editore</span><span>Giunti Editore</span></li>
-        <li><span>Collana</span><span>Bizarre</span></li>
-        <li><span>Copertina</span><span>Brossura con bandelle</span></li>
         <li><span>Pagine</span><span>264</span></li>
-        <li><span>Formato</span><span>21,5 × 28,0 cm</span></li>
-        <li><span>Pubblicazione</span><span>28 gennaio 2015</span></li>
+        <li><span>Dimensioni</span><span>21,5 × 28,0 cm</span></li>
       </ul>
     </div>
   </div>
@@ -278,18 +318,147 @@ function openLightbox(id) {
 }
 function closeLightbox() {
   document.querySelectorAll('.lightbox.active').forEach(function(l) {
+    var vid = l.querySelector('video[controls]');
+    if (vid) { vid.pause(); vid.currentTime = 0; }
     l.classList.remove('active');
   });
   document.body.style.overflow = '';
 }
-document.querySelectorAll('.lightbox').forEach(function(lb) {
-  lb.addEventListener('click', function(e) {
-    if (e.target === lb) closeLightbox();
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.lightbox').forEach(function(lb) {
+    lb.addEventListener('click', function(e) { if (e.target === lb) closeLightbox(); });
   });
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeLightbox();
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 });
 </script>
+
+<div class="lightbox" id="lightbox-vid-19">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-video-inner">
+    <video src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_19.mp4" controls muted loop playsinline></video>
+    <p class="lightbox-label">Book Trailer · Motion &amp; 3D</p>
+    <h2 class="lightbox-title">Vespa Piaggio</h2>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-vid-20">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-video-inner">
+    <video src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_20.mp4" controls muted loop playsinline></video>
+    <p class="lightbox-label">Book Trailer · Motion &amp; 3D</p>
+    <h2 class="lightbox-title">Vespa Piaggio</h2>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-vid-21">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-video-inner">
+    <video src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_21.mp4" controls muted loop playsinline></video>
+    <p class="lightbox-label">Book Trailer · Motion &amp; 3D</p>
+    <h2 class="lightbox-title">Vespa Piaggio</h2>
+  </div>
+</div>
+
+<script>
+function openVideoLightbox(id) {
+  var lb = document.getElementById(id);
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  var vid = lb.querySelector('video');
+  if (vid) { vid.currentTime = 0; vid.play(); }
+}
+</script>
+
+<div class="lightbox" id="lightbox-img02">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img">
+      <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg" alt="L'ultimo giorno di Luigi Tenco">
+    </div>
+    <div class="lightbox-info">
+      <p class="lightbox-label">Book Cover</p>
+      <h2 class="lightbox-title">L'ultimo giorno di Luigi Tenco</h2>
+      <p class="lightbox-author">Ferdinando Molteni</p>
+      <ul class="lightbox-meta">
+        <li><span>Editore</span><span>Giunti Editore</span></li>
+        <li><span>Pagine</span><span>160</span></li>
+        <li><span>Dimensioni</span><span>14,2 × 21,5 cm</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-img01">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img">
+      <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01_G.jpg" alt="Campari">
+    </div>
+    <div class="lightbox-info">
+      <p class="lightbox-label">Advertising Campaign</p>
+      <h2 class="lightbox-title">Campari</h2>
+      <ul class="lightbox-meta">
+        <li><span>Immagine</span><span>AI Illustration</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-img03">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img">
+      <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03_G.jpg" alt="Gastronogeek Anime">
+    </div>
+    <div class="lightbox-info">
+      <p class="lightbox-label">Book Cover</p>
+      <h2 class="lightbox-title">Gastrono Geek Anime</h2>
+      <p class="lightbox-author">Thibaud Villanova</p>
+      <ul class="lightbox-meta">
+        <li><span>Editore</span><span>Demetra</span></li>
+        <li><span>Pagine</span><span>120</span></li>
+        <li><span>Dimensioni</span><span>21,0 × 28,5 cm</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-img13">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img">
+      <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_13_G.jpg" alt="Correre">
+    </div>
+    <div class="lightbox-info">
+      <p class="lightbox-label">Book Cover</p>
+      <h2 class="lightbox-title">Correre <em>– Il metodo definitivo in 10 passi</em></h2>
+      <p class="lightbox-author">Jean-François Harvey</p>
+      <ul class="lightbox-meta">
+        <li><span>Editore</span><span>Demetra</span></li>
+        <li><span>Pagine</span><span>320</span></li>
+        <li><span>Dimensioni</span><span>17,0 × 24,0 cm</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-img04">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img">
+      <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04_G.jpg" alt="Manuale di moda maschile vintage">
+    </div>
+    <div class="lightbox-info">
+      <p class="lightbox-label">Book Cover</p>
+      <h2 class="lightbox-title">Manuale di moda maschile vintage</h2>
+      <p class="lightbox-author">Francesco Salamano</p>
+      <ul class="lightbox-meta">
+        <li><span>Editore</span><span>Demetra</span></li>
+        <li><span>Pagine</span><span>192</span></li>
+        <li><span>Dimensioni</span><span>19,3 × 24,7 cm</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
 </body>
 </html>
