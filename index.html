@@ -80,11 +80,9 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .about-p em{font-style:italic}
 
 .pin-video{position:relative;cursor:pointer}
-.pin-video .pin-thumb{display:block;transition:opacity 0.3s}
-.pin-video .pin-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.3s;border-radius:14px}
+.pin-video .pin-thumb{display:block;opacity:0}
+.pin-video .pin-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:1;border-radius:14px}
 .pin-video .pin-play-icon{display:none}
-.pin-video.playing .pin-thumb{opacity:0}
-.pin-video.playing .pin-vid{opacity:1}
 
 html{scroll-behavior:smooth}
 .pin{will-change:transform;contain:layout}
@@ -136,9 +134,9 @@ html{scroll-behavior:smooth}
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_16.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Motion Beat Fest</div><div class="pin-sub">Event Design</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_17.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso, droga e calci in bocca</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_18.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Sesso, droga e calci in bocca</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_19.mp4" muted loop playsinline></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
-<div class="pin span-h"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_20.mp4" muted loop playsinline></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
-<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_21.mp4" muted loop playsinline></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_19.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_19.mp4" muted loop playsinline autoplay></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin span-h"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_20.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_20.mp4" muted loop playsinline autoplay></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
+<div class="pin"><div class="pin-inner pin-video"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_21.jpg" loading="lazy" class="pin-thumb"><video class="pin-vid" src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/VID_21.mp4" muted loop playsinline autoplay></video><div class="pin-play-icon">▶</div></div><div class="pin-cap"><div class="pin-title">Vespa Piaggio</div><div class="pin-sub">Book Trailer</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_22.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Misteri da risolvere</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_23.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Meraviglie della Natura</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_24.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Cucina toscana</div><div class="pin-sub">Book Cover</div></div></div>
@@ -182,8 +180,8 @@ html{scroll-behavior:smooth}
   <div class="about-inner reveal">
     <p class="about-label">ABOUT</p>
     <h2 class="about-name">Vittorio<br><em>Esposito</em></h2>
-    <p class="about-p"><strong>Art director, designer editoriale e illustratore</strong> con oltre vent'anni di progetto visivo. Ex Art Director di <strong>Giunti Editore</strong> (2005–2024), opero oggi come freelance sotto il brand <strong>Vispo Design</strong>.</p>
-    <p class="about-p">Il mio lavoro abita lo spazio tra testo e immagine: copertine, identità editoriali, visual design. Ho coordinato oltre <strong>1000 pubblicazioni</strong> e guidato il redesign strategico di collane editoriali di rilievo nazionale.</p>
+    <p class="about-p"><strong>Art director, designer editoriale e illustratore.</strong> Dopo un'esperienza fondamentale con <strong>Andrea Rauch</strong> presso Rauch Design, uno degli studi più influenti del design italiano, sono stato per quasi vent'anni Art Director di <strong>Giunti Editore</strong>, coordinando oltre 1000 pubblicazioni e guidando il redesign strategico di collane editoriali di rilievo nazionale.</p>
+    <p class="about-p">Oggi opero come freelance sotto il brand <strong>Vispo Design</strong>, portando questa esperienza nel lavoro con editori, agenzie e brand.</p>
     <p class="about-p">Insegno <em>Graphic Design Editoriale</em> e continuo la ricerca visiva con la serie pittorica <em>Retro Pulse – Icone senza tempo</em>, esposta a Londra, Milano e Napoli.</p>
   </div>
 </section>
@@ -208,39 +206,26 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
 <script>
-// Intersection Observer — video parte quando entra nel viewport
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    var pin = entry.target;
-    var vid = pin.querySelector('.pin-vid');
-    if (entry.isIntersecting) {
-      vid.play().then(function() {
-        pin.classList.add('playing');
-      }).catch(function() {
-        // autoplay bloccato — mostra thumbnail
-        pin.classList.remove('playing');
-      });
-    } else {
-      vid.pause();
-      vid.currentTime = 0;
-      pin.classList.remove('playing');
-    }
-  });
-}, {threshold: 0.3});
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 document.querySelectorAll('.pin-video').forEach(function(pin) {
-  observer.observe(pin);
-  
-  // Desktop hover
   var vid = pin.querySelector('.pin-vid');
-  pin.addEventListener('mouseenter', function() {
-    vid.play().then(function() { pin.classList.add('playing'); }).catch(function(){});
-  });
-  pin.addEventListener('mouseleave', function() {
-    vid.pause();
-    vid.currentTime = 0;
-    pin.classList.remove('playing');
-  });
+  
+  // Forza play su mobile al primo scroll/touch
+  if (isMobile) {
+    document.addEventListener('touchstart', function startAll() {
+      document.querySelectorAll('.pin-video .pin-vid').forEach(function(v) {
+        v.play().catch(function(){});
+      });
+      document.removeEventListener('touchstart', startAll);
+    }, {once: true});
+  }
+
+  // Desktop hover
+  if (!isMobile) {
+    pin.addEventListener('mouseenter', function() { vid.play(); });
+    pin.addEventListener('mouseleave', function() { vid.pause(); vid.currentTime = 0; });
+  }
 });
 </script>
 </body>
