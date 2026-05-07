@@ -152,7 +152,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 <div class="pin span-v" onclick="openLightbox('lightbox-img02')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">L'ultimo giorno di Luigi Tenco</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin" onclick="openLightbox('lightbox-img03')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Gastrono Geek Anime</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin span-h" onclick="openLightbox('lightbox-img04')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Manuale di moda maschile vintage</div><div class="pin-sub">Book Cover</div></div></div>
-<div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Buono, facile e veloce</div><div class="pin-sub">Book Design</div></div></div>
+<div class="pin" onclick="openLightbox('lightbox-img05')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Buono, facile e veloce</div><div class="pin-sub">Book Design</div></div></div>
 <div class="pin span-h"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_06.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Artusi</div><div class="pin-sub">Book Cover</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_07.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Super Food</div><div class="pin-sub">Book Design</div></div></div>
 <div class="pin"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_08.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">Giappone</div><div class="pin-sub">Book Cover</div></div></div>
@@ -292,13 +292,6 @@ document.querySelectorAll('.pin-video').forEach(function(pin) {
 });
 </script>
 
-          <div class="flip-card-back">
-            <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12_R.jpg" alt="Queen - Retro">
-          </div>
-        </div>
-      </div>
-      <p class="flip-hint">↻ clicca per girare</p>
-    </div>
     <div class="lightbox-info">
       <p class="lightbox-label">Book Cover</p>
       <h2 class="lightbox-title">Queen</h2>
@@ -476,6 +469,25 @@ function openVideoLightbox(id) {
         <li><span>Editore</span><span>Giunti Editore</span></li>
         <li><span>Pagine</span><span>264</span></li>
         <li><span>Dimensioni</span><span>21,5 × 28,0 cm</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox-img05">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img">
+      <img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05_G.jpg" alt="Buono, facile e veloce">
+    </div>
+    <div class="lightbox-info">
+      <p class="lightbox-label">Book Design</p>
+      <h2 class="lightbox-title">Buono, facile e veloce <em>– 160 ricette gustose pronte in 10 minuti</em></h2>
+      <p class="lightbox-author">Sue Quinn</p>
+      <ul class="lightbox-meta">
+        <li><span>Editore</span><span>Demetra</span></li>
+        <li><span>Pagine</span><span>256</span></li>
+        <li><span>Dimensioni</span><span>19,0 × 24,0 cm</span></li>
       </ul>
     </div>
   </div>
