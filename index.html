@@ -98,6 +98,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .lightbox.active{display:flex}
 .lightbox-inner{display:flex;gap:48px;max-width:1100px;width:100%;align-items:center}
 .lightbox-img{flex:1;max-width:480px}
+
 .lightbox-img img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
 .lightbox-info{flex:1;color:var(--cream)}
 .lightbox-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--blue);text-transform:uppercase;margin-bottom:16px}
@@ -121,6 +122,14 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .lightbox-video-inner video{width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
 .lightbox-video-inner .lightbox-label{margin-top:16px;align-self:flex-start}
 .lightbox-video-inner .lightbox-title{align-self:flex-start}
+
+.popup-play-btn{position:absolute;bottom:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(9,9,12,0.7);border:1px solid rgba(74,158,190,0.4);color:var(--blue);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;backdrop-filter:blur(4px);z-index:2}
+.popup-play-btn:hover{background:rgba(74,158,190,0.2);border-color:var(--blue)}
+.popup-img-container{position:relative;flex:1;max-width:480px}
+.popup-img-container img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.popup-img-container video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;border-radius:8px;display:none;background:#000}
+.popup-img-container.playing video{display:block}
+.popup-img-container.playing img{visibility:hidden}
 </style>
 </head>
 <body>
@@ -373,7 +382,7 @@ var popupData = {
   'img08': {label:'Book Cover',title:`Giappone`,subtitle:`La tradizione vegetale`,author:'Lina e Setsuko Kurata',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_08_G.jpg',meta:[['Editore','Giunti Editore'],['Pagine','216'],['Dimensioni','19,0 × 27,0 cm']]},
   'img07': {label:'Book Design',title:`Superfood`,subtitle:`I cibi del benessere`,author:'',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_07_G.jpg',meta:[['Editore','Demetra'],['Pagine','320'],['Dimensioni','14,5 × 19,5 cm']]},
   'img06': {label:'Book Cover',title:`La scienza in cucina e l'arte di mangiar bene`,author:'Pellegrino Artusi',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_06_G.jpg',meta:[['Editore','Giunti'],['Pagine','672'],['Dimensioni','17,0 × 24,0 cm']]},
-  'queen': {label:'Book Cover',title:`Queen`,author:'Michele Primi',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12_G.jpg',meta:[['Editore','Giunti Editore'],['Pagine','264'],['Dimensioni','21,5 × 28,0 cm']]},
+  'queen': {label:'Book Cover',title:`Queen`,video:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12_V.mp4',author:'Michele Primi',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_12_G.jpg',meta:[['Editore','Giunti Editore'],['Pagine','264'],['Dimensioni','21,5 × 28,0 cm']]},
 };
 
 
@@ -392,7 +401,7 @@ function openLightbox(key) {
   var lb = document.createElement('div');
   lb.className = 'lightbox';
   lb.id = 'lightbox-active';
-  lb.innerHTML = '<button class="lightbox-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="lightbox-img"><img src="'+d.img+'" alt="'+d.title+'"></div><div class="lightbox-info"><p class="lightbox-label">'+d.label+'</p><h2 class="lightbox-title">'+d.title+'</h2>'+(d.subtitle?'<p class="lightbox-subtitle">'+d.subtitle+'</p>':'')+author+'<ul class="lightbox-meta">'+meta+'</ul></div></div>';
+  lb.innerHTML = '<button class="lightbox-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="popup-img-container"><img src="'+d.img+'" alt="'+d.title+'">'+(d.video?'<video src="'+d.video+'" playsinline></video><button class="popup-play-btn" onclick="togglePopupVideo(this)">▶</button>':'')+'</div><div class="lightbox-info"><p class="lightbox-label">'+d.label+'</p><h2 class="lightbox-title">'+d.title+'</h2>'+(d.subtitle?'<p class="lightbox-subtitle">'+d.subtitle+'</p>':'')+author+'<ul class="lightbox-meta">'+meta+'</ul></div></div>';
   lb.addEventListener('click', function(e){ if(e.target===lb) closeLightbox(); });
   document.body.appendChild(lb);
   lb.style.display = 'flex';
@@ -423,6 +432,42 @@ function closeLightbox() {
 
 document.addEventListener('keydown', function(e){
   if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+<script>
+function togglePopupVideo(btn) {
+  var container = btn.closest('.popup-img-container');
+  var vid = container.querySelector('video');
+  if (container.classList.contains('playing')) {
+    vid.pause();
+    vid.currentTime = 0;
+    container.classList.remove('playing');
+    btn.innerHTML = '▶';
+  } else {
+    vid.play();
+    container.classList.add('playing');
+    btn.innerHTML = '■';
+    // Stop alla fine del video
+    vid.onended = function() {
+      container.classList.remove('playing');
+      btn.innerHTML = '▶';
+      vid.currentTime = 0;
+    };
+  }
+}
+
+// Click sul video per stopparlo
+document.addEventListener('click', function(e) {
+  if (e.target.tagName === 'VIDEO' && e.target.closest('.popup-img-container')) {
+    var container = e.target.closest('.popup-img-container');
+    var btn = container.querySelector('.popup-play-btn');
+    var vid = e.target;
+    vid.pause();
+    vid.currentTime = 0;
+    container.classList.remove('playing');
+    if (btn) btn.innerHTML = '▶';
+  }
 });
 </script>
 </body>
