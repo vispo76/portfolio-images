@@ -9,7 +9,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#09090c;--blue:#4a9ebe;--blue-dim:#2d6e8a;--cream:#e8e0d0;--cream-dim:#9a9080;--border:rgba(74,158,190,0.15)}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;cursor:none}
+body{background:var(--bg);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:0.5}
 .cursor{position:fixed;width:8px;height:8px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;transform:translate(-50%,-50%)}
 .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(74,158,190,0.5);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.12s;transform:translate(-50%,-50%)}
@@ -36,7 +36,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .st{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,60px);letter-spacing:0.05em;color:var(--cream);line-height:1}
 .sl2{flex:1;height:1px;background:var(--border)}
 .pin-grid{columns:3;column-gap:12px}
-.pin{cursor:none;break-inside:avoid;margin-bottom:12px}
+.pin{break-inside:avoid;margin-bottom:12px}
 .pin-inner{overflow:hidden;border-radius:14px;background:#111318}
 .pin-inner img{width:100%;height:auto;display:block;border-radius:14px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s}
 .pin:hover .pin-inner img{transform:scale(1.04);opacity:0.88}
@@ -56,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .cta-block{border-top:1px solid var(--border);background:rgba(9,9,12,0.6);padding:100px 48px;text-align:center}
 .cta-block h3{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,80px);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:48px}
 .cta-block h3 em{font-style:italic;color:var(--blue);display:block}
-.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--blue-dim);padding:18px 48px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-radius:2px;transition:all 0.4s;cursor:none}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--blue-dim);padding:18px 48px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-radius:2px;transition:all 0.4s;}
 .btn:hover{background:var(--blue);color:var(--bg);border-color:var(--blue)}
 footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;justify-content:space-between}
 footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--cream-dim);opacity:0.45}
@@ -147,8 +147,6 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 <nav>
   <a href="#" class="nav-logo">Vispo Design</a>
   <ul class="nav-links">
@@ -259,9 +257,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 </footer>
 
 <script>
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+
 (function a(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
