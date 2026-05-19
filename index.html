@@ -145,6 +145,14 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .popup-play-btn{animation:blink-play 1.2s step-start infinite}
 .popup-play-btn:hover{animation:none;background:var(--blue);color:#09090c;border-color:var(--blue)}
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BJDK18Y1TB');
+</script>
 </head>
 <body>
 <nav>
@@ -319,6 +327,9 @@ function openLightbox(id) {
   var lb = document.getElementById(id);
   lb.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'popup_open', {event_category: 'portfolio', event_label: id});
+  }
 }
 function openVideoLightbox(id) {
   var lb = document.getElementById(id);
@@ -443,6 +454,13 @@ document.addEventListener('keydown', function(e){
 
 <script>
 function togglePopupVideo(btn) {
+  // tracciamento GA
+  var container = btn.closest('.popup-img-container');
+  var vid = container ? container.querySelector('video') : null;
+  if (vid && vid.src && typeof gtag !== 'undefined') {
+    var label = vid.src.split('/').pop().replace('.mp4','');
+    gtag('event', 'video_play', {event_category: 'portfolio', event_label: label});
+  }
   var container = btn.closest('.popup-img-container');
   var vid = container.querySelector('video');
   if (container.classList.contains('playing')) {
