@@ -147,6 +147,12 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 
 .pin-grid:hover .pin-inner img{filter:grayscale(100%);transition:filter 0.4s ease}
 .pin-grid:hover .pin:hover .pin-inner img{filter:grayscale(0%)}
+
+.rp-popup-gallery{display:flex;flex-direction:column;gap:12px;flex:1;max-width:480px}
+.rp-main-img{width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.rp-thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.rp-thumb{width:calc(25% - 6px);aspect-ratio:1;object-fit:cover;border-radius:4px;cursor:pointer;opacity:0.5;transition:opacity 0.2s;border:1px solid transparent}
+.rp-thumb:hover,.rp-thumb.active{opacity:1;border-color:var(--blue)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
@@ -166,7 +172,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
     <li><a href="#visual">Visual</a></li>
     <li><a href="#editorial">Editorial</a></li>
     <li><a href="#art">Art</a></li>
-    <li><a href="#illustration">Illustration</a></li>
+    <li><a href="retropulse.html">Retro Pulse</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </nav>
@@ -243,6 +249,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 <div class="pin" onclick="openLightbox('she')" style="cursor:pointer"><div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_48.jpg" loading="lazy"></div><div class="pin-cap"><div class="pin-title">She</div><div class="pin-sub">Watercolor</div></div></div>
   </div>
 </section>
+
 
 
 
@@ -491,6 +498,13 @@ document.addEventListener('click', function(e) {
     if (btn) btn.innerHTML = '▶';
   }
 });
+</script>
+
+<script>
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
 </script>
 </body>
 </html>

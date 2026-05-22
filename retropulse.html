@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Pulse — Vittorio Esposito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#09090c;--blue:#4a9ebe;--blue-dim:#2d6e8a;--cream:#e8e0d0;--cream-dim:#9a9080;--border:rgba(74,158,190,0.15)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:0.5}
+
+
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:26px 48px;background:linear-gradient(to bottom,rgba(9,9,12,0.97),transparent)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:0.28em;color:var(--blue);text-decoration:none}
+.nav-back{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:8px}
+.nav-back:hover{color:var(--blue)}
+.nav-back::before{content:'←';font-size:14px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 48px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:50%;left:-0.02em;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,20vw,300px);color:transparent;-webkit-text-stroke:1px rgba(74,158,190,0.06);line-height:1;user-select:none;pointer-events:none;white-space:nowrap}
+.hero-ey{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.3em;color:var(--blue);text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fu 1s ease 0.3s forwards}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,110px);font-weight:300;line-height:0.95;color:var(--cream);opacity:0;animation:fu 1s ease 0.5s forwards;margin-bottom:28px}
+.hero-h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:18px;font-weight:300;color:var(--cream-dim);max-width:520px;opacity:0;animation:fu 1s ease 0.7s forwards;margin-bottom:48px;line-height:1.6}
+.hero-cta{opacity:0;animation:fu 1s ease 0.9s forwards;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.si{position:absolute;bottom:40px;right:48px;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fu 1s ease 1.1s forwards}
+.si span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--cream-dim);writing-mode:vertical-rl;text-transform:uppercase}
+.sl-anim{width:1px;height:60px;background:linear-gradient(to bottom,var(--blue-dim),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION */
+.ps{padding:96px 40px 56px;border-top:1px solid var(--border);max-width:1500px;margin:0 auto}
+.sh{display:flex;align-items:baseline;gap:20px;margin-bottom:44px}
+.sn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.3em;color:var(--blue);opacity:0.7}
+.st{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,60px);letter-spacing:0.05em;color:var(--cream);line-height:1}
+.sl2{flex:1;height:1px;background:var(--border)}
+
+/* PIN GRID */
+.pin-grid{columns:3;column-gap:12px}
+.pin{break-inside:avoid;margin-bottom:12px;cursor:pointer}
+.pin-inner{overflow:hidden;border-radius:14px;background:#111318}
+.pin-inner img{width:100%;height:auto;display:block;border-radius:14px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s,filter 0.4s ease}
+.pin:hover .pin-inner img{transform:scale(1.04);opacity:0.88}
+.pin-cap{padding:8px 4px 4px}
+.pin-title{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream);line-height:1.3}
+.pin-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--cream-dim);text-transform:uppercase;margin-top:2px}
+.pin-grid:hover .pin-inner img{filter:grayscale(100%)}
+.pin-grid:hover .pin:hover .pin-inner img{filter:grayscale(0%)}
+
+/* TRITTICO ROW */
+.trittico-row{display:flex;gap:12px;margin-bottom:12px}
+.trittico-row .pin{flex:1;margin-bottom:0}
+.trittico-row:hover .pin-inner img{filter:grayscale(100%)}
+.trittico-row:hover .pin:hover .pin-inner img{filter:grayscale(0%)}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--blue-dim);padding:18px 48px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-radius:2px;transition:all 0.4s}
+.btn:hover{background:var(--blue);color:var(--bg);border-color:var(--blue)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border);padding:18px 48px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;border-radius:2px;transition:all 0.4s}
+.btn-ghost:hover{border-color:var(--cream-dim);color:var(--cream)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;justify-content:space-between}
+footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--cream-dim);opacity:0.45}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.94);z-index:1000;align-items:center;justify-content:center;padding:40px;box-sizing:border-box}
+.lightbox.active{display:flex}
+.lightbox-close{position:fixed;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(9,9,12,0.8);border:1px solid rgba(74,158,190,0.4);color:var(--cream);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;backdrop-filter:blur(4px);z-index:1010}
+.lightbox-close:hover{color:var(--blue);border-color:var(--blue)}
+
+/* POPUP LAYOUT */
+.rp-popup{display:flex;gap:48px;max-width:1100px;width:100%;align-items:flex-start}
+.rp-popup-left{flex:1;max-width:520px;display:flex;flex-direction:column;gap:10px}
+.rp-main-img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.7);transition:opacity 0.3s}
+.rp-thumbs{display:flex;gap:8px;margin-top:4px}
+.rp-thumb{flex:1;aspect-ratio:1/1;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s}
+.rp-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.2s}
+.rp-thumb:hover{border-color:rgba(74,158,190,0.5)}
+.rp-thumb.active{border-color:var(--blue)}
+.rp-thumb img:hover{opacity:0.85}
+.rp-popup-right{flex:1;color:var(--cream);padding-top:8px}
+.rp-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;color:var(--blue);text-transform:uppercase;margin-bottom:14px}
+.rp-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,48px);font-weight:300;line-height:1;margin-bottom:20px}
+.rp-meta{list-style:none;padding:0;margin:0;border-top:1px solid var(--border)}
+.rp-meta li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.05em}
+.rp-meta li span:first-child{color:var(--cream-dim);text-transform:uppercase}
+.rp-meta li span:last-child{color:var(--cream);text-align:right}
+.rp-desc{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:var(--cream-dim);line-height:1.7;margin-top:24px}
+
+/* THUMB LABEL */
+.rp-thumb-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+.rp-thumb-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;color:var(--cream-dim);text-transform:uppercase;text-align:center}
+
+@media(max-width:900px){
+  nav{padding:20px 24px}
+  .hero{padding:80px 24px}
+  .ps{padding:72px 16px 40px}
+  .pin-grid{columns:2}
+  footer{flex-direction:column;gap:8px;padding:24px}
+  .rp-popup{flex-direction:column;gap:24px;overflow-y:auto;max-height:90vh}
+  .rp-popup-left{max-width:100%}
+  .lightbox{padding:20px;align-items:flex-start;padding-top:60px}
+}
+@media(max-width:600px){
+  .pin-grid{columns:1}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BJDK18Y1TB');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Vispo Design</a>
+  <a href="index.html" class="nav-back">Portfolio</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">RETRO PULSE</div>
+  <div class="hero-ey">Serie pittorica · Acrilico su tela · 2023–2025</div>
+  <h1 class="hero-h1">Retro<br><em>Pulse</em></h1>
+  <p class="hero-sub">Icone senza tempo. Eroi dell'animazione giapponese e della cultura pop degli anni '70, '80, '90 reinterpretati in acrilico su tela con un'estetica pop-art contemporanea.</p>
+  <div class="hero-cta">
+    <a href="#opere" class="btn">Esplora le opere ↓</a>
+    <a href="index.html" class="btn-ghost">← Portfolio</a>
+  </div>
+  <div class="si"><div class="sl-anim"></div><span>Scroll</span></div>
+</section>
+
+<section class="ps reveal" id="opere">
+  <div class="sh">
+    <span class="sn">01</span>
+    <span class="st">Le Opere</span>
+    <div class="sl2"></div>
+  </div>
+  <!-- TRITTICO Abstract Jeeg — riga dedicata -->
+  <div class="trittico-row">
+    <div class="pin" onclick="openRP('rp03')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_03a.jpg" loading="lazy" alt="Abstract Jeeg — pannello I"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Jeeg <em style="font-style:normal;color:var(--blue);font-size:11px"> I</em></div><div class="pin-sub">Trittico · pannello I · 60×60 cm</div></div>
+    </div>
+    <div class="pin" onclick="openRP('rp03')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_03b.jpg" loading="lazy" alt="Abstract Jeeg — pannello II"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Jeeg <em style="font-style:normal;color:var(--blue);font-size:11px"> II</em></div><div class="pin-sub">Trittico · pannello II · 60×60 cm</div></div>
+    </div>
+    <div class="pin" onclick="openRP('rp03')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_03c.jpg" loading="lazy" alt="Abstract Jeeg — pannello III"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Jeeg <em style="font-style:normal;color:var(--blue);font-size:11px"> III</em></div><div class="pin-sub">Trittico · pannello III · 60×60 cm</div></div>
+    </div>
+  </div>
+
+  <div class="pin-grid">
+
+    <div class="pin" onclick="openRP('rp01')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_01.jpg" loading="lazy" alt="Capitan Harlock"></div>
+      <div class="pin-cap"><div class="pin-title">Capitan Harlock</div><div class="pin-sub">Acrilico su tela · 100×70 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp02')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_02.jpg" loading="lazy" alt="Abstract Mafalda"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Mafalda</div><div class="pin-sub">Acrilico su tela · 100×100 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp04')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_04.jpg" loading="lazy" alt="Charlie Brown"></div>
+      <div class="pin-cap"><div class="pin-title">Charlie Brown</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp05')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_05.jpg" loading="lazy" alt="Jigen"></div>
+      <div class="pin-cap"><div class="pin-title">Jigen</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp06')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_06.jpg" loading="lazy" alt="Abstract Popeye"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Popeye</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp07')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_07.jpg" loading="lazy" alt="Abstract Mouse"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Mouse</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp08')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_08.jpg" loading="lazy" alt="Lamù"></div>
+      <div class="pin-cap"><div class="pin-title">Lamù</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp09')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_09.jpg" loading="lazy" alt="Goldrake"></div>
+      <div class="pin-cap"><div class="pin-title">Goldrake</div><div class="pin-sub">Acrilico su tela · 68×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp10')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_10.jpg" loading="lazy" alt="Abstract Lupin"></div>
+      <div class="pin-cap"><div class="pin-title">Abstract Lupin</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp11')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_11.jpg" loading="lazy" alt="Jigen Daisuke"></div>
+      <div class="pin-cap"><div class="pin-title">Jigen Daisuke</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp12')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_12.jpg" loading="lazy" alt="Goemon"></div>
+      <div class="pin-cap"><div class="pin-title">Goemon</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp13')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_13.jpg" loading="lazy" alt="Fuji"></div>
+      <div class="pin-cap"><div class="pin-title">Fuji</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp14')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_14.jpg" loading="lazy" alt="Zazà"></div>
+      <div class="pin-cap"><div class="pin-title">Zazà</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+    <div class="pin" onclick="openRP('rp15')">
+      <div class="pin-inner"><img src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/rp_15.jpg" loading="lazy" alt="D10S"></div>
+      <div class="pin-cap"><div class="pin-title">D10S</div><div class="pin-sub">Acrilico su tela · 60×60 cm</div></div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer>
+  <p>© 2025 Vittorio Esposito — VispoStudio</p>
+  <a href="index.html" class="btn" style="padding:12px 28px;font-size:9px">← Vispo Design Portfolio</a>
+  <p>Retro Pulse · Acrilico su Tela · Serie in corso</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="rp-lightbox" onclick="handleLBClick(event)">
+  <button class="lightbox-close" onclick="closeRP()">✕</button>
+  <div class="rp-popup" id="rp-popup-inner">
+    <div class="rp-popup-left">
+      <img class="rp-main-img" id="rp-main-img" src="" alt="">
+      <div class="rp-thumbs" id="rp-thumbs"></div>
+    </div>
+    <div class="rp-popup-right">
+      <p class="rp-label" id="rp-label">Retro Pulse · Acrilico su Tela</p>
+      <h2 class="rp-title" id="rp-title"></h2>
+      <ul class="rp-meta" id="rp-meta"></ul>
+      <p class="rp-desc" id="rp-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// REVEAL
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el);});
+
+// DATA
+var BASE = 'https://raw.githubusercontent.com/vispo76/portfolio-images/main/';
+var rpData = {
+  rp01:{title:'Capitan Harlock',dim:'100×70 cm',year:'2023',imgs:{G:'rp_01_G.jpg',D1:'rp_01_D1.jpg',D2:'rp_01_D2.jpg',D3:'rp_01_D3.jpg',A:'rp_01_A.jpg'}},
+  rp02:{title:'Abstract Mafalda',dim:'100×100 cm',year:'2023',imgs:{G:'rp_02_G.jpg',D1:'rp_02_D1.jpg',D2:'rp_02_D2.jpg',D3:'rp_02_D3.jpg',A:'rp_02_A.jpg'}},
+  rp03:{title:'Abstract Jeeg',dim:'60×180 cm (trittico 3×60×60)',year:'2023',imgs:{G:'rp_03_G.jpg',D1:'rp_03_D1.jpg',D2:'rp_03_D2.jpg',D3:'rp_03_D3.jpg',A:'rp_03_A.jpg'}},
+  rp04:{title:'Charlie Brown',dim:'60×60 cm',year:'2024',imgs:{G:'rp_04_G.jpg',D1:'rp_04_D1.jpg',D2:'rp_04_D2.jpg',D3:'rp_04_D3.jpg',A:'rp_04_A.jpg'}},
+  rp05:{title:'Jigen',dim:'60×60 cm',year:'2024',imgs:{G:'rp_05_G.jpg',D1:'rp_05_D1.jpg',D2:'rp_05_D2.jpg',D3:'rp_05_D3.jpg',A:'rp_05_A.jpg'}},
+  rp06:{title:'Abstract Popeye',dim:'60×60 cm',year:'2024',imgs:{G:'rp_06_G.jpg',D1:'rp_06_D1.jpg',D2:'rp_06_D2.jpg',D3:'rp_06_D3.jpg',A:'rp_06_A.jpg'}},
+  rp07:{title:'Abstract Mouse',dim:'60×60 cm',year:'2024',imgs:{G:'rp_07_G.jpg',D1:'rp_07_D1.jpg',D2:'rp_07_D2.jpg',D3:'rp_07_D3.jpg',A:'rp_07_A.jpg'}},
+  rp08:{title:'Lamù',dim:'60×60 cm',year:'2024',imgs:{G:'rp_08_G.jpg',D1:'rp_08_D1.jpg',D2:'rp_08_D2.jpg',D3:'rp_08_D3.jpg',A:'rp_08_A.jpg'}},
+  rp09:{title:'Goldrake',dim:'68×60 cm',year:'2024',imgs:{G:'rp_09_G.jpg',D1:'rp_09_D1.jpg',D2:'rp_09_D2.jpg',D3:'rp_09_D3.jpg',A:'rp_09_A.jpg'}},
+  rp10:{title:'Abstract Lupin',dim:'60×60 cm',year:'2024',imgs:{G:'rp_10_G.jpg',D1:'rp_10_D1.jpg',D2:'rp_10_D2.jpg',D3:'rp_10_D3.jpg',A:'rp_10_A.jpg'}},
+  rp11:{title:'Jigen Daisuke',dim:'60×60 cm',year:'2024',imgs:{G:'rp_11_G.jpg',D1:'rp_11_D1.jpg',D2:'rp_11_D2.jpg',D3:'rp_11_D3.jpg',A:'rp_11_A.jpg'}},
+  rp12:{title:'Goemon',dim:'60×60 cm',year:'2025',imgs:{G:'rp_12_G.jpg',D1:'rp_12_D1.jpg',D2:'rp_12_D2.jpg',D3:'rp_12_D3.jpg',A:'rp_12_A.jpg'}},
+  rp13:{title:'Fuji',dim:'60×60 cm',year:'2025',imgs:{G:'rp_13_G.jpg',D1:'rp_13_D1.jpg',D2:'rp_13_D2.jpg',D3:'rp_13_D3.jpg',A:'rp_13_A.jpg'}},
+  rp14:{title:'Zazà',dim:'60×60 cm',year:'2025',imgs:{G:'rp_14_G.jpg',D1:'rp_14_D1.jpg',D2:'rp_14_D2.jpg',D3:'rp_14_D3.jpg',A:'rp_14_A.jpg'}},
+  rp15:{title:'D10S',dim:'60×60 cm',year:'2025',imgs:{G:'rp_15_G.jpg',D1:'rp_15_D1.jpg',D2:'rp_15_D2.jpg',D3:'rp_15_D3.jpg',A:'rp_15_A.jpg'}}
+};
+
+var thumbLabels = {G:'Opera', D1:'Dettaglio 1', D2:'Dettaglio 2', D3:'Dettaglio 3', A:'Ambientata'};
+
+function openRP(key) {
+  var d = rpData[key];
+  if (!d) return;
+
+  document.getElementById('rp-title').textContent = d.title;
+  document.getElementById('rp-label').textContent = 'Retro Pulse · Acrilico su Tela';
+  document.getElementById('rp-desc').textContent = 'Serie Retro Pulse — Icone senza tempo. Pop-art acrilica su tela.';
+
+  var meta = document.getElementById('rp-meta');
+  meta.innerHTML = [
+    ['Tecnica','Acrilico su Tela'],
+    ['Dimensioni', d.dim],
+    ['Anno', d.year],
+    ['Serie','Retro Pulse']
+  ].map(function(m){return '<li><span>'+m[0]+'</span><span>'+m[1]+'</span></li>';}).join('');
+
+  // Main image = G (opera intera)
+  var mainImg = document.getElementById('rp-main-img');
+  mainImg.src = BASE + d.imgs.G;
+  mainImg.alt = d.title;
+
+  // Thumbs
+  var thumbsEl = document.getElementById('rp-thumbs');
+  thumbsEl.innerHTML = '';
+  Object.keys(d.imgs).forEach(function(k) {
+    var wrap = document.createElement('div');
+    wrap.className = 'rp-thumb-wrap';
+    var thumb = document.createElement('div');
+    thumb.className = 'rp-thumb' + (k === 'G' ? ' active' : '');
+    thumb.dataset.src = BASE + d.imgs[k];
+    var img = document.createElement('img');
+    img.src = BASE + d.imgs[k];
+    img.alt = thumbLabels[k];
+    img.loading = 'lazy';
+    thumb.appendChild(img);
+    thumb.addEventListener('click', function() {
+      mainImg.src = this.dataset.src;
+      thumbsEl.querySelectorAll('.rp-thumb').forEach(function(t){t.classList.remove('active');});
+      thumb.classList.add('active');
+    });
+    var lbl = document.createElement('span');
+    lbl.className = 'rp-thumb-label';
+    lbl.textContent = thumbLabels[k];
+    wrap.appendChild(thumb);
+    wrap.appendChild(lbl);
+    thumbsEl.appendChild(wrap);
+  });
+
+  var lb = document.getElementById('rp-lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'popup_open', {event_category: 'retropulse', event_label: key});
+  }
+}
+
+function closeRP() {
+  document.getElementById('rp-lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function handleLBClick(e) {
+  if (e.target === document.getElementById('rp-lightbox')) closeRP();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeRP();
+});
+</script>
+</body>
+</html>
