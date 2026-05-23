@@ -169,6 +169,11 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 /* Skeleton solo nei popup */
 .popup-img-container img{background:#1a1a20}
 .rp-main-img{background:#1a1a20}
+
+.hero-btns{display:flex;gap:16px;align-items:stretch;flex-wrap:wrap}
+.hero-btns .btn,.hero-btns .btn-rp{margin-top:0;display:flex;align-items:center;justify-content:center}
+.btn-rp{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--cream);text-transform:uppercase;text-decoration:none;border:1px solid var(--cream-dim);padding:14px 28px;transition:all 0.3s}
+.btn-rp:hover{border-color:var(--cream);background:rgba(255,255,255,0.05)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
@@ -188,7 +193,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
     <li><a href="#visual">Visual</a></li>
     <li><a href="#editorial">Editorial</a></li>
     <li><a href="#art">Art</a></li>
-    <li><a href="retropulse.html">Retro Pulse</a></li>
+    <li><a href="retropulse.html" style="color:var(--blue)">Retro Pulse</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
@@ -200,7 +205,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
   <a href="#visual" onclick="toggleMenu()">Visual</a>
   <a href="#editorial" onclick="toggleMenu()">Editorial</a>
   <a href="#art" onclick="toggleMenu()">Art</a>
-  <a href="retropulse.html" onclick="toggleMenu()">Retro Pulse</a>
+  <a href="retropulse.html" onclick="toggleMenu()" style="color:var(--blue)">Retro Pulse</a>
   <a href="#about" onclick="toggleMenu()">About</a>
 </div>
 </nav>
@@ -211,7 +216,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
   <div class="hero-ey">Art Director — Editorial Designer — Illustratore</div>
   <h1 class="hero-h1">Vittorio<br><em>Esposito</em></h1>
   <p class="hero-sub">Vent'anni di progetto editoriale. Dalla copertina alla pagina, dall'identità alla narrazione visiva.</p>
-  <div class="hero-cta"><a href="#cover" class="btn">Esplora il portfolio ↓</a></div>
+  <div class="hero-cta"><div class="hero-btns"><a href="#cover" class="btn">Esplora il portfolio ↓</a><a href="retropulse.html" class="btn-rp">Retro Pulse →</a></div></div>
   <div class="si"><div class="sl-anim"></div><span>Scroll</span></div>
 </section>
 
