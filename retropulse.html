@@ -379,6 +379,19 @@ function handleLBClick(e) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeRP();
 });
+
+// VIDEO AUTOPLAY MOBILE
+document.querySelectorAll('video').forEach(function(v){
+  v.muted = true;
+  v.playsInline = true;
+  var vo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){v.play().catch(function(){});}
+      else{v.pause();}
+    });
+  },{threshold:0.3});
+  vo.observe(v);
+});
 </script>
 </body>
 </html>
