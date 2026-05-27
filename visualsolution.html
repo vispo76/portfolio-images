@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Solution — L'ultimo giorno di Luigi Tenco · Vispo Design</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vispo76.github.io/portfolio-images/visualsolution.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vispo76.github.io/portfolio-images/visualsolution.html">
+<meta property="og:title" content="Visual Solution – L'ultimo giorno di Luigi Tenco | Vispo Design">
+<meta property="og:description" content="Progetto di copertina per L'ultimo giorno di Luigi Tenco, Giunti Editore. Art direction Vittorio Esposito.">
+<meta property="og:image" content="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg">
+<meta property="og:site_name" content="Vispo Design">
+  <meta name="description" content="Visual Solution: progetto di copertina per L'ultimo giorno di Luigi Tenco, Giunti Editore. Art direction Vittorio Esposito – Vispo Design." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:         #09090c;
+      --blue:       #4a9ebe;
+      --blue-dim:   #2d6e8a;
+      --cream:      #e8e0d0;
+      --cream-dim:  #9a9080;
+      --border:     rgba(74,158,190,0.15);
+      /* alias per compatibilità */
+      --text:       #e8e0d0;
+      --text-dim:   #9a9080;
+      --accent:     #4a9ebe;
+      --accent-dim: #2d6e8a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono:  'DM Mono', 'Courier New', monospace;
+      --font-display: 'Bebas Neue', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-serif);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 48px;
+      background: linear-gradient(to bottom, rgba(9,9,12,0.97), transparent);
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 19px;
+      letter-spacing: 0.28em;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+
+    .hero-img-col {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 0;
+      transition: transform 8s ease;
+    }
+
+    .hero-img-col:hover img { transform: scale(1.03); }
+
+    .hero-img-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--bg) 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 4rem 4rem 3rem;
+    }
+
+    .vs-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      text-transform: none;
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      margin-bottom: 3rem;
+    }
+
+    .hero-meta {
+      border-left: 0.5px solid var(--accent-dim);
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .meta-value {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .section-title em {
+      font-style: italic;
+      text-transform: none;
+      color: var(--accent);
+    }
+
+    .body-text {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text);
+      max-width: 700px;
+    }
+
+    .body-text p + p { margin-top: 1.4rem; }
+
+    /* ── RULE ── */
+    .rule {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      height: 0.5px;
+      background: var(--border);
+    }
+
+    /* ── BRIEF GRID ── */
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .brief-card {
+      border: 0.5px solid var(--border);
+      border-top: 1px solid var(--accent-dim);
+      padding: 2.5rem;
+    }
+
+    .brief-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .brief-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .brief-card p {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-dim);
+    }
+
+    /* ── PROCESS STEPS ── */
+    .process-steps {
+      margin-top: 1rem;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .process-step:first-child { border-top: 0.5px solid var(--border); }
+
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-dim);
+      padding-top: 0.3rem;
+      text-align: right;
+      padding-right: 1.5rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .step-content { padding-left: 0.5rem; }
+
+    .step-title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 0.7rem;
+    }
+
+    .step-text {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-dim);
+    }
+
+    /* ── QUOTE ── */
+    .quote-wrap {
+      background: #0d1217;
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 5rem 2.5rem;
+    }
+
+    .quote-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    blockquote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--text);
+      border-left: 2px solid var(--accent);
+      padding-left: 2rem;
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-style: normal;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── COVERS ── */
+    .covers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .cover-item img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.5s ease;
+    }
+
+    .cover-item:hover img { transform: scale(1.015); }
+
+    .cover-caption {
+      margin-top: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ── SCHEDA ── */
+    .scheda {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 0.5px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .scheda-item {
+      padding: 2rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .scheda-item:last-child { border-right: none; }
+
+    .scheda-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .scheda-value {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      background: transparent;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.25s;
+    }
+
+    .btn:hover svg { transform: translateX(-3px); }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 0.5px solid var(--border);
+      padding: 3rem 2.5rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-credit {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+    }
+
+    /* ── FADE IN ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-img-col { height: 65vw; min-height: 260px; }
+      .hero-img-fade { background: linear-gradient(to bottom, transparent 50%, var(--bg) 100%); }
+      .hero-content { padding: 2rem 1.5rem 4rem; }
+
+      .brief-grid,
+      .covers-grid { grid-template-columns: 1fr; }
+
+      .scheda {
+        grid-template-columns: 1fr;
+      }
+      .scheda-item { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .scheda-item:last-child { border-bottom: none; }
+
+      .process-step { grid-template-columns: 44px 1fr; }
+      .section-wrap { padding: 4rem 1.5rem; }
+      .footer { flex-direction: column; gap: 1.2rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://vispo76.github.io/portfolio-images/" class="nav-brand">Vispo Design</a>
+    <ul class="nav-links">
+      <li><a href="https://vispo76.github.io/portfolio-images/">Portfolio</a></li>
+      <li><a href="https://vispo76.github.io/portfolio-images/retropulse.html">Retro Pulse</a></li>
+      <li><a href="https://vispo76.github.io/portfolio-images/#about">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero reveal">
+    <div class="hero-img-col">
+      <img
+        src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg"
+        alt="L'ultimo giorno di Luigi Tenco – copertina fronte"
+      />
+      <div class="hero-img-fade"></div>
+    </div>
+    <div class="hero-content">
+      <p class="vs-tag">Visual Solution</p>
+      <h1 class="hero-title">L'ultimo<br>giorno di<br><em>Luigi Tenco</em></h1>
+      <p class="hero-subtitle">Ferdinando Molteni · Giunti Editore</p>
+      <div class="hero-meta">
+        <div class="meta-row">
+          <span class="meta-label">Tipo di progetto</span>
+          <span class="meta-value">Book Cover Design</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cliente</span>
+          <span class="meta-value">Giunti Editore</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Categoria</span>
+          <span class="meta-value">Saggistica narrativa · Musica italiana</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 IL PROGETTO -->
+  <div class="section-wrap reveal">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Il progetto</h2>
+    </div>
+    <div class="body-text">
+      <p>Il brief era chiaro fin dall'inizio, e proprio per questo sfidante: niente ritratto fotografico del cantante, niente nostalgia d'archivio, niente agiografia. <em style="color:var(--accent)">L'ultimo giorno di Luigi Tenco</em> non è una biografia — è un romanzo-dossier che ricostruisce le ore che precedono e seguono la morte di Tenco al Festival di Sanremo del 1967. Un testo che mescola cronaca, mistero e dramma umano.</p>
+      <p>La copertina doveva fare lo stesso: essere drammatica senza essere violenta, evocativa senza essere illustrativa, capace di reggere il peso di una storia irrisolta senza chiuderla in una risposta.</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- 02 LA SFIDA -->
+  <div class="section-wrap reveal">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">La <em>sfida</em></h2>
+    </div>
+    <div class="brief-grid">
+      <div class="brief-card">
+        <span class="brief-card-label">Vincolo</span>
+        <h3 class="brief-card-title">Nessun ritratto canonico</h3>
+        <p>Il mercato editoriale italiano è abituato alle copertine-ritratto per i libri sui cantautori: foto in bianco e nero, stile documentaristico, patina vintage. Quella strada era preclusa — e con buona ragione: sarebbe stata la copertina sbagliata per il libro giusto.</p>
+      </div>
+      <div class="brief-card">
+        <span class="brief-card-label">Obiettivo</span>
+        <h3 class="brief-card-title">Drammatico, non respingente</h3>
+        <p>Il libro tratta di morte, di mistero, di una mezz'ora che nessuno ha saputo davvero spiegare. Ma doveva restare in libreria, tra le mani di lettori comuni. L'intensità era necessaria. L'eccesso, no.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- 03 IL PROCESSO -->
+  <div class="section-wrap reveal">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Il processo <em>creativo</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">I</div>
+        <div class="step-content">
+          <h3 class="step-title">La ricerca sul soggetto</h3>
+          <p class="step-text">Prima di disegnare, leggere. Tenco morì nella sua stanza dell'Hotel Savoy di Sanremo nella notte tra il 26 e il 27 gennaio 1967. Le versioni ufficiali parlano di suicidio, ma nel tempo si sono accumulate ipotesi alternative. Una delle più ricorrenti — mai verificata, mai del tutto smentita — lo vuole coinvolto in una partita di roulette russa. Un gioco spietato, un colpo casuale, una pistola che non lascia scelta.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">II</div>
+        <div class="step-content">
+          <h3 class="step-title">L'immagine concettuale</h3>
+          <p class="step-text">La roulette russa prevede la benda sugli occhi — come tortura, come resa, come ultimo gesto prima del caso. Da lì è nata l'idea compositiva: un volto diviso in tre fasce orizzontali. Fronte, occhi, bocca — con gli occhi nascosti dalla banda scura del titolo. Non una metafora illustrata, ma una struttura visiva che è la benda stessa.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">III</div>
+        <div class="step-content">
+          <h3 class="step-title">Il linguaggio dell'acquerello</h3>
+          <p class="step-text">In quel periodo stavo esplorando l'acquerello come tecnica espressiva nella mia ricerca personale. Le macchie di colore che attraversano il volto — rosso, verde, blu — non evocano sangue in modo esplicito. Sono il caos, la casualità, la violenza non mostrata. L'acquerello come linguaggio dell'imprevisto: non controllabile, non prevedibile. Come un colpo di pistola.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">IV</div>
+        <div class="step-content">
+          <h3 class="step-title">La tipografia mista</h3>
+          <p class="step-text">Il titolo lavora su due registri: "TENCO" in maiuscoletto serif, istituzionale, storico — il personaggio pubblico, il mito. "luigi" in corsivo rosso, scritto a mano, quasi intimo — l'uomo, la persona, la fragilità che il libro cerca di recuperare. I due livelli coesistono nella stessa riga, in tensione.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-wrap reveal">
+    <div class="quote-inner">
+      <blockquote>
+        La copertina non doveva raccontare Tenco. Doveva fare quello che fa la roulette russa: mettere qualcosa davanti agli occhi, e toglierlo.
+        <cite>Vittorio Esposito — Art Director</cite>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- 04 IL RISULTATO -->
+  <div class="section-wrap reveal">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Il <em>risultato</em></h2>
+    </div>
+    <div class="covers-grid">
+      <div class="cover-item">
+        <img
+          src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg"
+          alt="L'ultimo giorno di Luigi Tenco – copertina fronte"
+        />
+        <p class="cover-caption">Copertina · Fronte</p>
+      </div>
+      <div class="cover-item">
+        <img
+          src="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_R.jpg"
+          alt="L'ultimo giorno di Luigi Tenco – quarta di copertina"
+        />
+        <p class="cover-caption">Quarta di copertina</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- 05 SCHEDA TECNICA -->
+  <div class="section-wrap reveal">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Scheda <em>tecnica</em></h2>
+    </div>
+    <div class="scheda">
+      <div class="scheda-item">
+        <span class="scheda-label">Editore</span>
+        <span class="scheda-value">Giunti Editore</span>
+      </div>
+      <div class="scheda-item">
+        <span class="scheda-label">Autore</span>
+        <span class="scheda-value">Ferdinando Molteni</span>
+      </div>
+      <div class="scheda-item">
+        <span class="scheda-label">Formato</span>
+        <span class="scheda-value">14,2 × 21,5 cm</span>
+      </div>
+      <div class="scheda-item">
+        <span class="scheda-label">Tecniche</span>
+        <span class="scheda-value">Fotografia · Acquerello digitale · Compositing</span>
+      </div>
+      <div class="scheda-item">
+        <span class="scheda-label">Ruolo</span>
+        <span class="scheda-value">Art Direction · Book Cover Design</span>
+      </div>
+      <div class="scheda-item">
+        <span class="scheda-label">Anno</span>
+        <span class="scheda-value">Giunti Editore</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer reveal">
+    <a href="https://vispo76.github.io/portfolio-images/" class="btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+      </svg>
+      Torna al portfolio
+    </a>
+    <span class="footer-credit">© 2026 Vittorio Esposito · Vispo Design</span>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hero subito visibile
+    const hero = document.querySelector('.hero.reveal');
+    if (hero) setTimeout(() => hero.classList.add('visible'), 100);
+  </script>
+</body>
+</html>
