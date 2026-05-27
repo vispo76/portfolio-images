@@ -20,18 +20,7 @@
 <meta name="twitter:description" content="20 anni di progetto editoriale. Copertine, book design, branding e illustrazione.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/vispo76/portfolio-images/main/og-image.jpg">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Vittorio Esposito",
-  "url": "https://vispo76.github.io/portfolio-images/",
-  "jobTitle": "Art Director, Designer Editoriale, Illustratore",
-  "worksFor": {"@type": "Organization", "name": "Vispo Design"},
-  "alumniOf": {"@type": "Organization", "name": "Giunti Editore"},
-  "address": {"@type": "PostalAddress", "addressLocality": "Firenze", "addressCountry": "IT"},
-  "email": "vit.esposito@gmail.com",
-  "sameAs": ["https://www.instagram.com/vispo.design", "https://pin.it/1p0GJN1eF"]
-}
+{"@context":"https://schema.org","@type":"Person","name":"Vittorio Esposito","url":"https://vispo76.github.io/portfolio-images/","jobTitle":"Art Director, Designer Editoriale, Illustratore","worksFor":{"@type":"Organization","name":"Vispo Design"},"alumniOf":{"@type":"Organization","name":"Giunti Editore"},"address":{"@type":"PostalAddress","addressLocality":"Firenze","addressCountry":"IT"},"email":"vit.esposito@gmail.com","sameAs":["https://www.instagram.com/vispo.design","https://pin.it/1p0GJN1eF"]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -204,6 +193,9 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .hero-btns .btn,.hero-btns .btn-rp{margin-top:0;display:flex;align-items:center;justify-content:center}
 .btn-rp{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--cream);text-transform:uppercase;text-decoration:none;border:1px solid var(--cream-dim);padding:14px 28px;transition:all 0.3s}
 .btn-rp:hover{border-color:var(--cream);background:rgba(255,255,255,0.05)}
+
+.popup-link-btn{display:inline-block;margin-top:24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);border:1px solid var(--cream-dim);padding:10px 20px;text-decoration:none;transition:all 0.3s}
+.popup-link-btn:hover{border-color:var(--blue);color:var(--blue)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
@@ -448,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 var popupData = {
   'img01': {label:'Advertising Campaign',title:`Campari`,author:'',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_01_G.jpg',meta:[['Immagine','AI Illustration']]},
-  'img02': {label:'Book Cover',title:`L'ultimo giorno di Luigi Tenco`,video:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_V.mp4',author:'Ferdinando Molteni',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg',meta:[['Editore','Giunti Editore'],['Pagine','160'],['Dimensioni','14,2 × 21,5 cm']]},
+  'img02': {label:'Book Cover',title:`L'ultimo giorno di Luigi Tenco`,video:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_V.mp4',author:'Ferdinando Molteni',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg',meta:[['Editore','Giunti Editore'],['Pagine','160'],['Dimensioni','14,2 × 21,5 cm']],link:{url:'visualsolution.html',label:'Visual Solution'}},
   'img03': {label:'Book Cover',title:`Gastrono Geek Anime`,video:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03_V.mp4',author:'Thibaud Villanova',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_03_G.jpg',meta:[['Editore','Demetra'],['Pagine','120'],['Dimensioni','21,0 × 28,5 cm']]},
   'img04': {label:'Book Cover',title:`Manuale di moda maschile vintage`,video:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04_V.mp4',author:'Francesco Salamano',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_04_G.jpg',meta:[['Editore','Demetra'],['Pagine','192'],['Dimensioni','19,3 × 24,7 cm']]},
   'img05': {label:'Book Design',title:`Buono, facile e veloce`,subtitle:`160 ricette gustose pronte in 10 minuti`,author:'Sue Quinn',img:'https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_05_G.jpg',meta:[['Editore','Demetra'],['Pagine','256'],['Dimensioni','19,0 × 24,0 cm']]},
@@ -508,7 +500,7 @@ function openLightbox(key) {
   var lb = document.createElement('div');
   lb.className = 'lightbox';
   lb.id = 'lightbox-active';
-  lb.innerHTML = '<button class="lightbox-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="popup-img-container"><img src="'+d.img+'" alt="'+d.title+'">'+(d.video?'<video src="'+d.video+'" playsinline></video><button class="popup-play-btn" onclick="togglePopupVideo(this)">▶</button>':'')+'</div><div class="lightbox-info"><p class="lightbox-label">'+d.label+'</p><h2 class="lightbox-title">'+d.title+'</h2>'+(d.subtitle?'<p class="lightbox-subtitle">'+d.subtitle+'</p>':'')+author+'<ul class="lightbox-meta">'+meta+'</ul></div></div>';
+  lb.innerHTML = '<button class="lightbox-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="popup-img-container"><img src="'+d.img+'" alt="'+d.title+'">'+(d.video?'<video src="'+d.video+'" playsinline></video><button class="popup-play-btn" onclick="togglePopupVideo(this)">▶</button>':'')+'</div><div class="lightbox-info"><p class="lightbox-label">'+d.label+'</p><h2 class="lightbox-title">'+d.title+'</h2>'+(d.subtitle?'<p class="lightbox-subtitle">'+d.subtitle+'</p>':'')+author+'<ul class="lightbox-meta">'+meta+'</ul>'+(d.link?'<a href="'+d.link.url+'" class="popup-link-btn">'+d.link.label+' →</a>':'')+'</div></div>';
   lb.addEventListener('click', function(e){ if(e.target===lb) closeLightbox(); });
   document.body.appendChild(lb);
   lb.style.display = 'flex';
