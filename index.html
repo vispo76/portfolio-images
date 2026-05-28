@@ -181,31 +181,6 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .pin:hover .pin-inner img{transform:scale(1.05);opacity:0.9}
 
 .pin-grid:hover .pin:not(:hover) .pin-inner img{filter:grayscale(100%)}
-
-/* ── HERO GRAIN ── */
-.hero-grain{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.045}
-@keyframes grain-shift{
-  0%{transform:translate(0,0)}
-  20%{transform:translate(-2px,1px)}
-  40%{transform:translate(1px,-2px)}
-  60%{transform:translate(-1px,2px)}
-  80%{transform:translate(2px,-1px)}
-  100%{transform:translate(0,0)}
-}
-.hero-grain svg{width:100%;height:100%;animation:grain-shift 0.12s steps(1) infinite}
-
-/* ── VISPO LETTER ANIMATION ── */
-.hero-bg .vl{display:inline-block;opacity:0;animation:vl-in 0.5s ease forwards}
-.hero-bg .vl:nth-child(1){animation-delay:0.1s}
-.hero-bg .vl:nth-child(2){animation-delay:0.2s}
-.hero-bg .vl:nth-child(3){animation-delay:0.3s}
-.hero-bg .vl:nth-child(4){animation-delay:0.4s}
-.hero-bg .vl:nth-child(5){animation-delay:0.5s}
-@keyframes vl-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── WHATSAPP / TEL ── */
-.footer-contacts a{color:inherit;text-decoration:none;transition:color 0.3s}
-.footer-contacts a:hover{color:var(--blue)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
@@ -217,15 +192,15 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 </script>
 
   <!-- SEO & Open Graph -->
-  <meta name="description" content="Portfolio di Vittorio Esposito, art director e designer editoriale con 20 anni di esperienza. Ex Art Director Giunti Editore. Copertine, book design, branding, illustrazione e pittura. Freelance a Firenze.">
-  <meta property="og:title" content="Vittorio Esposito – Art Director & Designer Editoriale | Vispo Design">
+  <meta name="description" content="Art director, designer editoriale e illustratore. Vent'anni di progetto editoriale. Portfolio di Vittorio Esposito – Vispo Design.">
+  <meta property="og:title" content="Vispo Design – Portfolio">
   <meta property="og:description" content="Art director, designer editoriale e illustratore. Vent'anni di progetto editoriale.">
   <meta property="og:image" content="https://raw.githubusercontent.com/vispo76/portfolio-images/main/og-image.jpg">
   <link rel="canonical" href="https://vispodesign.com/">
   <meta property="og:url" content="https://vispodesign.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Vittorio Esposito – Art Director & Designer Editoriale | Vispo Design">
+  <meta name="twitter:title" content="Vispo Design – Portfolio">
   <meta name="twitter:description" content="Art director, designer editoriale e illustratore. Vent'anni di progetto editoriale.">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/vispo76/portfolio-images/main/og-image.jpg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -261,8 +236,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 
 
 <section class="hero">
-  <div class="hero-grain" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
-  <div class="hero-bg"><span class="vl">V</span><span class="vl">I</span><span class="vl">S</span><span class="vl">P</span><span class="vl">O</span></div>
+  <div class="hero-bg">VISPO</div>
   <div class="hero-ey">Art Director — Editorial Designer — Illustratore</div>
   <h1 class="hero-h1">Vittorio<br><em>Esposito</em></h1>
   <p class="hero-sub">Vent'anni di progetto editoriale. Dalla copertina alla pagina, dall'identità alla narrazione visiva.</p>
@@ -355,7 +329,7 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 
 <footer>
   <p>© 2026 Vittorio Esposito · Vispo Design</p>
-  <p class="footer-contacts"><a href="mailto:vit.esposito@gmail.com">vit.esposito@gmail.com</a> · <a href="tel:+393385623294">+39 338 5623294</a> · <a href="https://wa.me/393385623294" target="_blank" rel="noopener">WhatsApp</a></p>
+  <p><a href="mailto:vit.esposito@gmail.com" style="color:inherit;text-decoration:none">vit.esposito@gmail.com</a> · <a href="tel:+393385623294" style="color:inherit;text-decoration:none">+39 338 5623294</a> · <a href="https://wa.me/393385623294" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">WhatsApp</a></p>
 </footer>
 
 
