@@ -4,22 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visual Solution — L'ultimo giorno di Luigi Tenco · Vispo Design</title>
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vispodesign.com/visualsolution.html">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://vispodesign.com/visualsolution.html">
-<meta property="og:title" content="Visual Solution – L'ultimo giorno di Luigi Tenco | Vispo Design">
-<meta property="og:description" content="Progetto di copertina per L'ultimo giorno di Luigi Tenco, Giunti Editore. Art direction Vittorio Esposito.">
-<meta property="og:image" content="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg">
-<meta property="og:site_name" content="Vispo Design">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vispo76.github.io/portfolio-images/visualsolution.html">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://vispo76.github.io/portfolio-images/visualsolution.html">
-<meta property="og:title" content="Visual Solution – L'ultimo giorno di Luigi Tenco | Vispo Design">
-<meta property="og:description" content="Progetto di copertina per L'ultimo giorno di Luigi Tenco, Giunti Editore. Art direction Vittorio Esposito.">
-<meta property="og:image" content="https://raw.githubusercontent.com/vispo76/portfolio-images/main/img_02_G.jpg">
-<meta property="og:site_name" content="Vispo Design">
   <meta name="description" content="Visual Solution: progetto di copertina per L'ultimo giorno di Luigi Tenco, Giunti Editore. Art direction Vittorio Esposito – Vispo Design." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -93,6 +77,54 @@
     }
 
     .nav-links a:hover { color: var(--blue); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--cream-dim);
+      transition: all 0.3s ease;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 99;
+      background: rgba(9,9,12,0.97);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-mobile a:hover { color: var(--blue); }
 
     /* ── HERO ── */
     .hero {
@@ -493,6 +525,7 @@
     @media (max-width: 768px) {
       nav { padding: 1.1rem 1.5rem; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
 
       .hero {
         grid-template-columns: 1fr;
@@ -528,7 +561,19 @@
       <li><a href="https://vispo76.github.io/portfolio-images/retropulse.html">Retro Pulse</a></li>
       <li><a href="https://vispo76.github.io/portfolio-images/#about">About</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="https://vispo76.github.io/portfolio-images/" onclick="closeMobile()">Portfolio</a>
+    <a href="https://vispo76.github.io/portfolio-images/retropulse.html" onclick="closeMobile()">Retro Pulse</a>
+    <a href="https://vispo76.github.io/portfolio-images/#about" onclick="closeMobile()">About</a>
+  </div>
 
   <!-- HERO -->
   <div class="hero reveal">
@@ -716,6 +761,22 @@
   </div>
 
   <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
