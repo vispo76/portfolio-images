@@ -187,6 +187,13 @@ footer p{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;col
 .pin:hover .pin-inner img{transform:scale(1.05);opacity:0.9}
 
 .pin-grid:hover .pin:not(:hover) .pin-inner img{filter:grayscale(100%)}
+
+/* Video loading spinner */
+.video-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(9,9,12,0.6);border-radius:8px;z-index:5;pointer-events:none;opacity:1;transition:opacity 0.3s ease}
+.video-loader.hidden{opacity:0}
+.video-loader svg{width:36px;height:36px;animation:spin 0.8s linear infinite}
+.video-loader circle{fill:none;stroke:var(--blue);stroke-width:3;stroke-dasharray:60;stroke-dashoffset:20;stroke-linecap:round}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJDK18Y1TB"></script>
@@ -493,7 +500,7 @@ function openLightbox(key) {
   var lb = document.createElement('div');
   lb.className = 'lightbox';
   lb.id = 'lightbox-active';
-  lb.innerHTML = '<button class="lightbox-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="popup-img-container"><img src="'+d.img+'" alt="'+d.title+'">'+(d.video?'<video src="'+d.video+'" playsinline></video><button class="popup-play-btn" onclick="togglePopupVideo(this)">▶</button>':'')+'</div><div class="lightbox-info"><p class="lightbox-label">'+d.label+'</p><h2 class="lightbox-title">'+d.title+'</h2>'+(d.subtitle?'<p class="lightbox-subtitle">'+d.subtitle+'</p>':'')+author+'<ul class="lightbox-meta">'+meta+'</ul>'+(d.link?'<a href="'+d.link.url+'" class="popup-link-btn">'+d.link.label+' →</a>':'')+'</div></div>';
+  lb.innerHTML = '<button class="lightbox-close" onclick="closeLightbox()">✕</button><div class="lightbox-inner"><div class="popup-img-container"><img src="'+d.img+'" alt="'+d.title+'">'+(d.video?'<div class="video-loader hidden" id="vidLoader"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15"/></svg></div><video src="'+d.video+'" playsinline></video><button class="popup-play-btn" onclick="togglePopupVideo(this)">▶</button>':'')+'</div><div class="lightbox-info"><p class="lightbox-label">'+d.label+'</p><h2 class="lightbox-title">'+d.title+'</h2>'+(d.subtitle?'<p class="lightbox-subtitle">'+d.subtitle+'</p>':'')+author+'<ul class="lightbox-meta">'+meta+'</ul>'+(d.link?'<a href="'+d.link.url+'" class="popup-link-btn">'+d.link.label+' →</a>':'')+'</div></div>';
   lb.addEventListener('click', function(e){ if(e.target===lb) closeLightbox(); });
   document.body.appendChild(lb);
   lb.style.display = 'flex';
@@ -544,6 +551,12 @@ function togglePopupVideo(btn) {
     btn.innerHTML = '▶';
   } else {
     vid.play();
+    var loader = container.querySelector('.video-loader');
+    if(loader) {
+      vid.addEventListener('waiting', function(){ loader.classList.remove('hidden'); });
+      vid.addEventListener('canplay', function(){ loader.classList.add('hidden'); });
+      vid.addEventListener('playing', function(){ loader.classList.add('hidden'); });
+    }
     container.classList.add('playing');
     btn.innerHTML = '■';
     vid.onended = function() {
